@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+// Import Components
+import SearchBusinesses from './Components/SearchBusinesses'
 
 export default function App() {
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <SearchBusinesses />
   );
 }
