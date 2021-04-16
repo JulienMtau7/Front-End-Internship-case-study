@@ -29,7 +29,7 @@ class SearchBusinesses extends React.Component {
                 <FlatList
                     data={businessesData}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <BusinessesItem />}
+                    renderItem={({item}) => <BusinessesItem data={item} />}
                 />
             </View>
         )

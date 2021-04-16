@@ -3,26 +3,28 @@ import { StyleSheet, View, Text, Image } from 'react-native'
 
 class BusinessesItem extends React.Component {
   render() {
+
+    const data = this.props.data
+
     return (
       <View style={styles.main_container}>
         <Image
           style={styles.image}
-          source={{uri: "image"}}
+          source={{uri: data.image_url}}
         />
         <View style={styles.content_container}>
           <View style={styles.header_container}>
-            <Text style={styles.title_text}>Pizza Julia</Text>
-            <Text style={styles.description_text}>catégories: pizza</Text>
+            <Text style={styles.title_text}>{data.name}</Text>
+            <Text>Note: {data.rating}</Text>
           </View>
 
-          <View style={styles.description_container}>
-            <Text style={styles.description_text}>adresse:</Text>
-            <Text>43 rue de Charenton</Text>
-            <Text>75012 Paris</Text>
-            <Text>France</Text>
+          <View style={styles.adresse_container}>
+            <Text style={styles.adresse_text}>adresse:</Text>
+            <Text>{data.location.address1}</Text>
+            <Text>{data.location.zip_code} {data.location.city}</Text>
           </View>
-          <View style={styles.date_container}>
-            <Text style={styles.date_text}>+3377777777</Text>
+          <View style={styles.number_container}>
+            <Text style={styles.number_text}>{data.phone}</Text>
           </View>
         </View>
       </View>
@@ -58,25 +60,23 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     paddingRight: 5
   },
-  vote_text: {
-    fontWeight: 'bold',
-    fontSize: 26,
-    color: '#666666'
-  },
-  description_container: {
+
+  adresse_container: {
     flex: 7
   },
-  description_text: {
+
+  adresse_text: {
     fontStyle: 'italic',
     color: '#666666'
   },
-  date_container: {
+
+  number_container: {
     flex: 1
   },
-  date_text: {
+  number_text: {
     textAlign: 'right',
     fontSize: 14
-  }
+  },
 })
 
 export default BusinessesItem
