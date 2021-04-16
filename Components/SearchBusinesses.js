@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native'
 
 // import React Native Elements
 import { SearchBar  } from 'react-native-elements'
+
+// import component
+import BusinessesItem from './BusinessesItem'
 
 // import Data static
 import businessesData from '../Data/businessesData'
@@ -19,9 +22,15 @@ class SearchBusinesses extends React.Component {
                     containerStyle={styles.search_bar_container}
                     inputContainerStyle={styles.search_bar_input_container}
                 />
-                <TouchableOpacity
-                    style={styles.button}
-                ><Text>Rechercher</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                    <Text>Rechercher</Text>
+                </TouchableOpacity>
+
+                <FlatList
+                    data={businessesData}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({item}) => <BusinessesItem />}
+                />
             </View>
         )
     }
@@ -40,6 +49,7 @@ const styles = StyleSheet.create({
         fontSize: 40
     },
 
+    /* SearchBar Style */
     search_bar_container: {
         backgroundColor: 'transparent',
         borderBottomColor: 'transparent',
@@ -50,6 +60,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#DDD',
         borderRadius: 10,
     },
+    /* SearchBar End */
 
     button: {
         alignItems: "center",
