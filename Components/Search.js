@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        color: "#000",
+        color: "#ebefff",
         fontWeight: "bold",
         fontSize: 40
     },
@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 20,
         height: 50,
-        backgroundColor: "#DDD",
+        backgroundColor: "#ebefff",
         paddingLeft: 10,
         borderRadius: 10
     },
 
     button: {
         alignItems: "center",
-        backgroundColor: "#DDD",
+        backgroundColor: "#ebefff",
         borderRadius: 10,
         padding: 10,
         marginRight: 7,
