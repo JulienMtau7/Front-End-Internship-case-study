@@ -1,20 +1,15 @@
 import React from 'react'
 
 import { StyleSheet, View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native'
-
-// import React Native Elements
-import { SearchBar  } from 'react-native-elements'
+import { Icon } from 'react-native-elements'
 
 // import component
 import FilmItem from './FilmItem'
 
-// import Data static
-import filmData from '../Data/filmData'
-
 // import Data from API
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
 
-
+import { useNavigation } from '@react-navigation/native';
 
 class Search extends React.Component {
 
@@ -24,7 +19,7 @@ class Search extends React.Component {
         this.state = {
           films: []
         }
-      }
+    }
 
     _loadFilms() {
         if (this.searchedText.length > 0) {
@@ -38,10 +33,23 @@ class Search extends React.Component {
         this.searchedText = text
     }
 
+    _onPressHandler(){
+        this.props.navigation.navigate('Auth')
+    }
+
     render() {
         return (
             <View style={styles.main_container}>
-                <Text style={styles.title}>Search a Film</Text>
+                <View style={styles.header_container}>
+                    <Text style={styles.title}>Search a Film</Text>
+                    <Icon
+                        iconStyle={styles.user_icon}
+                        containerStyle={styles.container_user}
+                        name='user-circle-o'
+                        type='font-awesome'
+                        onPress={() => this._onPressHandler()}
+                    />
+                </View>
                 <TextInput
                     onChangeText={(text) => this._searchTextInputChanged(text)}
                     style={styles.textinput} 
@@ -68,10 +76,21 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
+    header_container: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    
+    user_icon: {
+        color: "#ebefff",
+        fontSize: 30,
+    },
+
     title: {
         color: "#ebefff",
         fontWeight: "bold",
-        fontSize: 40
+        fontSize: 40,
     },
 
     textinput: {
@@ -92,8 +111,7 @@ const styles = StyleSheet.create({
         padding: 10,
         marginRight: 7,
         marginLeft: 7,
-    }
-
+    },
 })
   
 export default Search
