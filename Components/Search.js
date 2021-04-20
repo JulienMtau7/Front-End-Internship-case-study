@@ -9,8 +9,6 @@ import FilmItem from './FilmItem'
 // import Data from API
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
 
-import { useNavigation } from '@react-navigation/native';
-
 class Search extends React.Component {
 
     constructor(props) {

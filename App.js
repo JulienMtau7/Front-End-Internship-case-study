@@ -1,13 +1,29 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 // Import Components
 import Search from './Components/Search'
 import Auth from './Components/Auth'
 
 // Import React Navigation
-import { NavigationContainer, DefaultTheme  } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+
+// Import Firebase config
+import * as firebase from 'firebase'
+const firebaseConfig = {
+  apiKey: "AIzaSyDU0KAV2uvz2I9e1nM-sr-f7SQtAYK5PuM",
+  authDomain: "front-end-case-study.firebaseapp.com",
+  projectId: "front-end-case-study",
+  storageBucket: "front-end-case-study.appspot.com",
+  messagingSenderId: "758200411853",
+  appId: "1:758200411853:web:1544d32bbf2bfd01cf2b84",
+  measurementId: "G-L753MHRLNY"
+}
+
+if(firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig)
+}
 
 const Stack = createStackNavigator()
 
@@ -15,7 +31,7 @@ const MyTheme = {
   colors: {
     background: '#313545',
   },
-};
+}
 
 export default function App() {
   return (
@@ -25,7 +41,7 @@ export default function App() {
           <Stack.Screen name="Auth" component={Auth} />
         </Stack.Navigator>
       </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
